@@ -97,7 +97,8 @@
 
     # Tap.
     - name: Ensure configured taps are tapped.
-      homebrew_tap:
+      community.general.homebrew_tap:
+        path: '{{ homebrew_brew_bin_path }}'
         tap: '{{ item.name | default(item) }}'
         url: '{{ item.url | default(omit) }}'
         state: present
@@ -128,6 +129,7 @@
         name: "{{ item.name | default(item) }}"
         install_options: "{{ item.install_options | default(omit) }}"
         state: present
+        path: "{{ homebrew_brew_bin_path }}"
       loop: "{{ homebrew_installed_packages }}"
       notify:
         - Clear homebrew cache
