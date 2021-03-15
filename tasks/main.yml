@@ -97,7 +97,7 @@
 
     # Tap.
     - name: Ensure configured taps are tapped.
-      homebrew_tap:
+      community.general.homebrew_tap:
         path: '{{ homebrew_brew_bin_path }}'
         tap: '{{ item.name | default(item) }}'
         url: '{{ item.url | default(omit) }}'
